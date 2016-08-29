@@ -20,9 +20,15 @@
 
 ### 基本命令
 
-* date : 显示时间
-* cal : 显示日历
-* bc : 计算器
+* sudo + command : 以超级管理员身份执行
+* netstat -tln | grep 8080 : 查看端口占用情况
+* ps -ef :查看进行是否运行
+* ps -aux : 查看进程
+* kill -9 + pid:终止进程
+* sort : 排序
+* alias : 查看系统中所有的alias
+* ps : 查看进程
+* grep : 查询字符（可用ack替换）
 * man : 查看当前命令帮助文档
 * shutdown : 关机
 * chmod : 改变文件权限
@@ -37,6 +43,9 @@
 * mv -r : 移动文件夹
 * ls -a : 查看所有文件，包含隐藏文件
 * history : 查看历史命令记录
+* date : 显示时间
+* cal : 显示日历
+* bc : 计算器
 * ZZ : 类似为vim中:wq
 * r foo=bar : 将前一条命令的字符进行替换
 
@@ -54,3 +63,32 @@
 * zip : 压缩
 * unzip : 解压缩
 * tar : 压缩/解压缩
+
+### grep命令详解
+
+* find / -name filename.txt根据名称查找/目录下的filename.txt文件。
+* find . -name "*.xml"递归查找所有的xml文件。
+* find . -name "*.xml" |xargs grep "hello world"递归查找所有文件内容中包含hello world的xml文件。
+* grep -H 'spring' *.xml查找所以有的包含spring的xml文件。
+* find ./ -size 0 | xargs rm -f &删除文件大小为零的文件。
+* ls -l | grep '.jar'查找当前目录中的所有jar文件。
+* grep 'test' d*显示所有以d开头的文件中包含test的行。
+* grep 'test' aa bb cc显示在aa，bb，cc文件中匹配test的行。
+* grep '[a-z]\{5\}' aa显示所有包含每个字符串至少有5个连续小写字符的字符串的行。
+
+### ps
+
+ps -aux 是以BSD方式显示
+
+* a 显示所有用户的进程(show processes for all users)
+* u 显示用户(display the process's user/owner)
+* x 显示无控制终端的进程(also show processes not attached to a terminal)
+
+ps -ef 是以System V方式显示，该种方式比BSD方式显示的多
+
+* e 显示所有用户的进程(all processes)此参数的效果和指定"a"参数相同
+* f  用ASCII字符显示树状结构，表达程序间的相互关系(ASCII art forest)
+
+### 重定向
+* > ：已覆盖的方式，把命令的正确输出输出到指定的文件或者设备中
+* >> : 已追加的方式，把命令的正确输出输出到指定的文件或者设备中
